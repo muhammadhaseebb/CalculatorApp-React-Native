@@ -12,7 +12,7 @@ import {OrangeButtons} from './Components/OrangeButtons';
 import {ZeroButton} from './Components/ZeroButton';
 import {useState} from 'react';
 
-export function App() {
+export default function App() {
   const [value, setValue] = useState('0');
   const handlePress = text => {
     if (text == 'C') {
