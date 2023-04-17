@@ -14,12 +14,15 @@ import {useState} from 'react';
 
 export default function App() {
   const [value, setValue] = useState('0');
+  console.log(value);
   const handlePress = text => {
     if (text == 'C') {
       setValue('0');
     } else if (text == '=') {
       try {
-        setValue(eval(value));
+        setValue(eval(value).toString());
+        value.toString();
+        console.log('type of part: ', typeof eval(value).toString());
       } catch (e) {
         console.log('error');
       }
@@ -40,18 +43,26 @@ export default function App() {
       }
       // error present in this else if
       else if (isNaN(text)) {
-        if (
-          value.slice(-1) == '+' ||
-          value.slice(-1) == '-' ||
-          value.slice(-1) == '*' ||
-          value.slice(-1) == '/' ||
-          value.slice(-1) == '%' ||
-          value.slice(-1) == '.' ||
-          value.slice(-1) == '='
-        ) {
-          setValue(value.slice(0, -1) + text);
+        if (value !== undefined && typeof value === 'function') {
+          handlePress();
         } else {
-          setValue(value + text);
+          try {
+            if (
+              value.slice(-1) == '+' ||
+              value.slice(-1) == '-' ||
+              value.slice(-1) == '*' ||
+              value.slice(-1) == '/' ||
+              value.slice(-1) == '%' ||
+              value.slice(-1) == '.' ||
+              value.slice(-1) == '='
+            ) {
+              setValue(value.slice(0, -1) + text);
+            } else {
+              setValue(value + text);
+            }
+          } catch (error) {
+            console.log('error');
+          }
         }
       } else if (!isNaN(text)) {
         setValue(value + text);
