@@ -18,11 +18,11 @@ import {
 
 export function ZeroButton({text, onHandlePress}) {
   return (
-    <View style={styles.button1}>
-      <TouchableOpacity onPress={() => onHandlePress(text)}>
+    <TouchableOpacity onPress={() => onHandlePress(text)}>
+      <View style={styles.button1}>
         <Text style={styles.btnTxt}>{text}</Text>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 }
 

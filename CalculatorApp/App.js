@@ -18,6 +18,8 @@ export default function App() {
   const handlePress = text => {
     if (text == 'C') {
       setValue('0');
+    } else if (text == 'R') {
+      setValue(value.slice(0, -1));
     } else if (text == '=') {
       try {
         setValue(eval(value).toString());
@@ -89,7 +91,7 @@ export default function App() {
         }}>
         <BlackButtons text={'C'} onHandlePress={handlePress} />
         <BlackButtons text={'%'} onHandlePress={handlePress} />
-        <BlackButtons text={'.'} onHandlePress={handlePress} />
+        <BlackButtons text={'R'} onHandlePress={handlePress} />
         <OrangeButtons text={'+'} onHandlePress={handlePress} />
       </View>
 
@@ -143,8 +145,8 @@ export default function App() {
           width: '80%',
           marginBottom: 20,
         }}>
-        <ZeroButton text={'00'} onHandlePress={handlePress} />
-        <BlackButtons text={'0'} onHandlePress={handlePress} />
+        <ZeroButton text={'0'} onHandlePress={handlePress} />
+        <BlackButtons text={'.'} onHandlePress={handlePress} />
         <OrangeButtons text={'='} onHandlePress={handlePress} />
       </View>
     </View>
